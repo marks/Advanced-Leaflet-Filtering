@@ -72,11 +72,11 @@
 
 
 /*****************************************************************************************************************************************************************
-U   U    SSS   EEEE    RRRRR        IIIIIII   NN   N    PPPPP   U    U   TTTTT
-U   U    S     E       R   R           I      N N  N    P   P   U    U     T
-U   U    SSS   EEEE    RRRRR           I      N  N N    PPPPP   U    U     T
-U   U      S   E       R R             I      N   NN    P       U    U     T
- UUU     SSS   EEEE    R   R        IIIIIII   N    N    P        UUUU      T
+																		U   U    SSS   EEEE    RRRRR        IIIIIII   NN   N    PPPPP   U    U   TTTTT
+																		U   U    S     E       R   R           I      N N  N    P   P   U    U     T
+																		U   U    SSS   EEEE    RRRRR           I      N  N N    PPPPP   U    U     T
+																		U   U      S   E       R R             I      N   NN    P       U    U     T
+													           UUU     SSS   EEEE    R   R        IIIIIII   N    N    P        UUUU      T
 
 At the most basic level, the only input a user will have to do is input the names of the desired layers. These names should come directly from the catagories of your
 CSV file. For example:
@@ -92,9 +92,9 @@ the type of Apartment then the code would look like this:
 and paste it in between the quotations inside the push method.
 
 CODE:
-tflayers.push({set="1," title:"1 Bedroom"});
-tflayers.push({set="1," title:"2 Bedroom"});
-tflayers.push({set="1," title:"3 Bedroom"});
+tflayers.push("1 Bedroom");
+tflayers.push("2 Bedroom");
+tflayers.push("3 Bedroom");
 
 * valueLayers represents all of the layers that are determined by a string (i.e. him, her, they). When inputing these, there are two properites you must include. The first
 is a type. The type is just a general catagory that encapsulates all of the possible options (the column title would be good option). The next property is the title. The title
@@ -106,6 +106,25 @@ valueLayers.push({type:"Type", title:"University Apartment"});
 valueLayers.push({type:"Type", title:"Residence Hall"});
 
 *****************************************************************************************************************************************************************/
+
+
+					tflayers.push({set:"1", title:"1 Bedroom"});
+					tflayers.push({set:"1", title:"2 Bedroom"});
+					tflayers.push({set:"1", title:"3 Bedroom"});
+
+					tflayers.push({set:"2", title:"Single Bathroom"});
+					tflayers.push({set:"2", title:"Multi Bathroom"});
+
+					tflayers.push({set:"3", title:"Has A.C."})
+
+
+					valueLayers.push({type:"Type", title:"Commercial Apartment"});
+					valueLayers.push({type:"Type", title:"University Apartment"});
+					valueLayers.push({type:"Type", title:"Residence Hall"});
+
+					valueLayers.push({type:"Pets",title:"Cats"});
+					valueLayers.push({type:"Pets",title:"Dogs"});
+					valueLayers.push({type:"Pets",title:"All Animals"});
 
 
 /*****************************************************************************************************************************************************************/
