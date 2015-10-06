@@ -19,5 +19,9 @@ __*Resources:__<br>
   *[L.Control.Sidebar](https://github.com/turbo87/leaflet-sidebar/) <br>
   *[Active Layers](https://github.com/vogdb/Leaflet.ActiveLayers) <br>
   
+  __*Examples:__<br>
+   *[Apartments](codedes.com/Apartments)<br>
+   *[Coffee Shops](http://www.despecialreport.com/coffee)<br>
+  
   <br><br>
   Also, I am working on interactive GUI right now that should help ease the process even more.<br><br>
