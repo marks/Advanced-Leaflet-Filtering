@@ -20,7 +20,7 @@ __*Resources:__<br>
   *[Active Layers](https://github.com/vogdb/Leaflet.ActiveLayers) <br>
   
   __*Examples:__<br>
-   *[Apartments](codedes.com/Apartments)<br>
+   *[Apartments](http://www.codedes.com/Apartments)<br>
    *[Coffee Shops](http://www.despecialreport.com/coffee)<br>
   
   <br><br>
