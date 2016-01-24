@@ -127,7 +127,7 @@ L.GeoCSV = L.GeoJSON.extend({
              for (var item in tfLayers){
                if (tfLayers[item].title == csvTitles[i]){
                  if (feature["properties"][this._propertiesNames[i]]){
-                   if (feature["properties"][this._propertiesNames[i]] == "y")
+                   if (feature["properties"][this._propertiesNames[i]] == "Yes")
                     feature[csvTitles[i]] = true;
                   else{
                       feature[csvTitles[i]] = false;

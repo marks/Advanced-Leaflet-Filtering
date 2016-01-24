@@ -114,7 +114,7 @@ function filterstuff(){
 function createTFBases(){
     baseOverlay.eachLayer(function(layer){
         for (var tLayer in allLayers){
-          if (layer.feature[allLayers[tLayer].name] == true || layer.feature[allLayers[tLayer].name] == "true" || layer.feature[allLayers[tLayer].name] == "y" || layer.feature[allLayers[tLayer].name] == "yes"){
+          if (layer.feature[allLayers[tLayer].name] == true || layer.feature[allLayers[tLayer].name] == "true" || layer.feature[allLayers[tLayer].name] == "Yes" || layer.feature[allLayers[tLayer].name] == "yes"){
             allLayers[tLayer].addLayer(layer);
           }
         }
@@ -131,7 +131,7 @@ function createTFLayers(temp){
 function tfFilter(temp){
   baseOverlay.eachLayer(function(layer){
     for (var item in tflayers){
-      if (layer.feature[tflayers[item].title] == true || layer.feature[tflayers[item].title] == "true" || layer.feature[tflayers[item].title] == "y" || layer.feature[tflayers[item].title] == "yes"){
+      if (layer.feature[tflayers[item].title] == true || layer.feature[tflayers[item].title] == "true" || layer.feature[tflayers[item].title] == "Yes" || layer.feature[tflayers[item].title] == "yes"){
         temp.addLayer(layer);
       }
     }
@@ -176,4 +176,21 @@ function readfile(f) {
   }
 
   return text;
+}
+//Parse the Price value
+function parsePrice(p){
+  var np = "";
+  j = 0;
+  np += '$';
+  for (var i in p){
+    if (p[i] == "-"){
+      np += p[i];
+      np += '$'
+    }
+    else{
+      np += p[i];
+    }
+  }
+
+  return np;
 }

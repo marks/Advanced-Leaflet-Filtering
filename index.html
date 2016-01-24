@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-		<title>Dynamic Layers</title>
+		<title>Pullman Housing</title>
 
     <!-- Leaflet 0.5: https://github.com/CloudMade/Leaflet-->
      <link rel="stylesheet" href="lib/leaflet.css" />
@@ -17,6 +17,9 @@
 
     <!-- Active Layers -->
     <script src="scripts/ActiveLayers.js"></script>
+
+		<!-- Button Plugin -->
+		<script src = "scripts/L.Control.Button.js"></script>
 
     <!-- Sidebar Plugin -->
     <link rel="stylesheet" href="css/L.Control.Sidebar.css">
@@ -34,6 +37,8 @@
 		<textarea id='Data'></textarea>
 
     <div id="map"></div>
+		<button id="resetButton" role="button" class="btn btn-primary">Reset</button>
+		<button id="helpbutton" role="button" class="btn btn-primary">Map Key</button>
     <div id="sidebar" class="resize">
         <h1><font size="7"><b>Map Key</b></font></h1>
     </div>
@@ -72,11 +77,11 @@
 
 
 /*****************************************************************************************************************************************************************
-U   U    SSS   EEEE    RRRRR        IIIIIII   NN   N    PPPPP   U    U   TTTTT
-U   U    S     E       R   R           I      N N  N    P   P   U    U     T
-U   U    SSS   EEEE    RRRRR           I      N  N N    PPPPP   U    U     T
-U   U      S   E       R R             I      N   NN    P       U    U     T
- UUU     SSS   EEEE    R   R        IIIIIII   N    N    P        UUUU      T
+																		U   U    SSS   EEEE    RRRRR        IIIIIII   NN   N    PPPPP   U    U   TTTTT
+																		U   U    S     E       R   R           I      N N  N    P   P   U    U     T
+																		U   U    SSS   EEEE    RRRRR           I      N  N N    PPPPP   U    U     T
+																		U   U      S   E       R R             I      N   NN    P       U    U     T
+													           UUU     SSS   EEEE    R   R        IIIIIII   N    N    P        UUUU      T
 
 At the most basic level, the only input a user will have to do is input the names of the desired layers. These names should come directly from the catagories of your
 CSV file. For example:
@@ -92,9 +97,9 @@ the type of Apartment then the code would look like this:
 and paste it in between the quotations inside the push method.
 
 CODE:
-tflayers.push({set="1," title:"1 Bedroom"});
-tflayers.push({set="1," title:"2 Bedroom"});
-tflayers.push({set="1," title:"3 Bedroom"});
+tflayers.push("1 Bedroom");
+tflayers.push("2 Bedroom");
+tflayers.push("3 Bedroom");
 
 * valueLayers represents all of the layers that are determined by a string (i.e. him, her, they). When inputing these, there are two properites you must include. The first
 is a type. The type is just a general catagory that encapsulates all of the possible options (the column title would be good option). The next property is the title. The title
@@ -106,6 +111,9 @@ valueLayers.push({type:"Type", title:"University Apartment"});
 valueLayers.push({type:"Type", title:"Residence Hall"});
 
 *****************************************************************************************************************************************************************/
+
+
+
 
 
 /*****************************************************************************************************************************************************************/
@@ -241,9 +249,10 @@ valueLayers.push({type:"Type", title:"Residence Hall"});
             onEachFeature: function (feature, layer) {
               var popup = '';
               for (var key in feature.properties) {
-                  var title = mapCsv.getPropertyTitle(key);
-                  popup += '<b>'+title+':'+' '+'</b>'+feature.properties[key]+'<br />';
-									layer.setIcon(blueIcon);
+									var title = mapCsv.getPropertyTitle(key);
+
+									popup += '<b>'+title+':'+' '+'</b>'+feature.properties[key]+'<br />';
+									layer.setIcon(redIcon);}	
               }
               //Apply the popup to the marker
               layer.bindPopup(popup);
@@ -283,6 +292,25 @@ valueLayers.push({type:"Type", title:"Residence Hall"});
 					//Sidebar created by L.Control.Sidebar (check them out on Gitbub)
 					//Make the sidebar to display the 'about'
           var sidebar = L.control.sidebar('sidebar', {position: 'left'}).addTo(map);
+
+					//Declares, adds and sets the functionality for the help button
+					var resetButton = new L.Control.Button(L.DomUtil.get('resetButton')).addTo(map);
+					resetButton.on('click', function () {
+							location.reload();
+							window.scrollTo(0,0);
+					});
+
+					//Declares, adds and sets the functionality for the help button
+					var helpButton = new L.Control.Button(L.DomUtil.get('helpbutton')).addTo(map);
+					helpButton.on('click', function () {
+						//The built in toggling is kind of stupid, so I made my own.
+						var visible = sidebar.isVisible();
+						if (visible == true){
+							sidebar.hide();
+						} else {
+							sidebar.show();
+						}
+					});
 
 					/**********************************************************************Dumb stuff. Dont't touch.*****************************************************************/
 					//Needed for the nested div area within the control to enable scrolling

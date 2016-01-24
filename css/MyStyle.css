@@ -31,7 +31,7 @@ textarea {
 /*button style*/
 #buttons {
     width:120px;
-
+    color: black;
 }
 
 .extras{
@@ -45,7 +45,7 @@ textarea {
     button {
         font-family:Arial, Helvetica, sans-serif;
         font-size:16px;
-        border:solid #FFF 3px;
+        border:solid #000 3px;
         border-radius: 10px;
         background:none;
         color: #FFF;
@@ -69,11 +69,13 @@ textarea {
     #helpbutton{
         width: 120px;
         height: 60px;
+        color: black;
     }
 
     #resetButton{
         width: 120px;
         height: 60px;
+        color: black;
     }
 
     #sidebar {
